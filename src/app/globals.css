@@ -1,0 +1,316 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* -----------------------------------------------------------------
+ * Aarohan Legal — Editorial brand system
+ * Palette and typography per brand brief §6.
+ * No bright royal blue. No navy-and-gold law-firm styling. No
+ * glassmorphism everywhere. No neon. The red is an editorial ink
+ * reminiscent of a bound legal volume.
+ * ----------------------------------------------------------------- */
+
+@theme inline {
+  --color-background: var(--aarohan-paper);
+  --color-foreground: var(--aarohan-ink);
+  --font-sans: var(--font-instrument-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
+  --font-mono: var(--font-ibm-plex-mono), ui-monospace, monospace;
+
+  /* shadcn-compatible tokens mapped onto Aarohan palette */
+  --color-card: var(--aarohan-paper);
+  --color-card-foreground: var(--aarohan-ink);
+  --color-popover: var(--aarohan-paper);
+  --color-popover-foreground: var(--aarohan-ink);
+  --color-primary: var(--aarohan-ink);
+  --color-primary-foreground: var(--aarohan-paper);
+  --color-secondary: var(--aarohan-paper-deep);
+  --color-secondary-foreground: var(--aarohan-ink);
+  --color-muted: var(--aarohan-paper-deep);
+  --color-muted-foreground: var(--aarohan-ink-muted);
+  --color-accent: var(--aarohan-brass);
+  --color-accent-foreground: var(--aarohan-ink);
+  --color-destructive: var(--aarohan-red-deep);
+  --color-border: var(--aarohan-border);
+  --color-input: var(--aarohan-border);
+  --color-ring: var(--aarohan-ink);
+  --color-sidebar: var(--aarohan-paper);
+  --color-sidebar-foreground: var(--aarohan-ink);
+  --color-sidebar-primary: var(--aarohan-ink);
+  --color-sidebar-primary-foreground: var(--aarohan-paper);
+  --color-sidebar-accent: var(--aarohan-paper-deep);
+  --color-sidebar-accent-foreground: var(--aarohan-ink);
+  --color-sidebar-border: var(--aarohan-border);
+  --color-sidebar-ring: var(--aarohan-ink);
+
+  /* Brand-only tokens */
+  --color-aarohan-paper: var(--aarohan-paper);
+  --color-aarohan-paper-deep: var(--aarohan-paper-deep);
+  --color-aarohan-ink: var(--aarohan-ink);
+  --color-aarohan-ink-muted: var(--aarohan-ink-muted);
+  --color-aarohan-red: var(--aarohan-red);
+  --color-aarohan-red-deep: var(--aarohan-red-deep);
+  --color-aarohan-brass: var(--aarohan-brass);
+  --color-aarohan-dark: var(--aarohan-dark);
+  --color-aarohan-dark-text: var(--aarohan-dark-text);
+  --color-aarohan-border: var(--aarohan-border);
+
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+}
+
+:root {
+  --aarohan-paper: #f1eee6;
+  --aarohan-paper-deep: #e7e1d5;
+  --aarohan-ink: #11110f;
+  --aarohan-ink-muted: #5f5c55;
+  --aarohan-red: #6a1f2b;
+  --aarohan-red-deep: #3c1119;
+  --aarohan-brass: #a9844f;
+  --aarohan-dark: #151412;
+  --aarohan-dark-text: #f2eee5;
+  --aarohan-border: rgba(17, 17, 15, 0.18);
+
+  /* shadcn compat fallbacks */
+  --radius: 0;
+  --background: var(--aarohan-paper);
+  --foreground: var(--aarohan-ink);
+}
+
+.dark {
+  --aarohan-paper: #151412;
+  --aarohan-paper-deep: #1f1d1a;
+  --aarohan-ink: #f2eee5;
+  --aarohan-ink-muted: #a8a39a;
+  --aarohan-border: rgba(242, 238, 229, 0.18);
+  --background: var(--aarohan-paper);
+  --foreground: var(--aarohan-ink);
+}
+
+@layer base {
+  * {
+    border-color: var(--aarohan-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--aarohan-paper);
+    color: var(--aarohan-ink);
+    font-family: var(--font-instrument-sans), ui-sans-serif, system-ui, sans-serif;
+    font-feature-settings: "ss01", "cv01";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background-color: var(--aarohan-red);
+    color: var(--aarohan-paper);
+  }
+  /* Strong, visible focus ring per WCAG 2.2 */
+  :focus-visible {
+    outline: 2px solid var(--aarohan-ink);
+    outline-offset: 3px;
+    border-radius: 0;
+  }
+  /* No default rounded buttons — the Aarohan aesthetic is architectural */
+  button,
+  a {
+    border-radius: 0;
+  }
+}
+
+/* -----------------------------------------------------------------
+ * Editorial typography utilities
+ * ----------------------------------------------------------------- */
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-instrument-sans), ui-sans-serif, system-ui, sans-serif;
+    font-feature-settings: "ss01";
+    letter-spacing: -0.02em;
+  }
+  .font-editorial {
+    font-family: var(--font-newsreader), ui-serif, Georgia, serif;
+  }
+  .font-mono-label {
+    font-family: var(--font-ibm-plex-mono), ui-monospace, monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.6875rem;
+    font-weight: 500;
+  }
+  .hero-headline {
+    font-family: var(--font-instrument-sans), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    line-height: 0.92;
+    font-size: clamp(2.75rem, 11.5vw, 13rem);
+  }
+  .editorial-heading {
+    font-family: var(--font-instrument-sans), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.02;
+    font-size: clamp(1.875rem, 4.6vw, 4rem);
+  }
+  .section-heading {
+    font-family: var(--font-instrument-sans), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    font-size: clamp(1.5rem, 3vw, 2.75rem);
+  }
+  .editorial-body {
+    font-family: var(--font-newsreader), ui-serif, Georgia, serif;
+    font-size: clamp(1.0625rem, 1.4vw, 1.3125rem);
+    line-height: 1.62;
+  }
+  .editorial-body-large {
+    font-family: var(--font-newsreader), ui-serif, Georgia, serif;
+    font-size: clamp(1.25rem, 1.7vw, 1.625rem);
+    line-height: 1.55;
+  }
+  .hairline {
+    background-color: var(--aarohan-border);
+  }
+  .ink-rule {
+    background-color: var(--aarohan-ink);
+  }
+  .red-rule {
+    background-color: var(--aarohan-red);
+  }
+  .brass-rule {
+    background-color: var(--aarohan-brass);
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+/* -----------------------------------------------------------------
+ * Editorial motion primitives — quiet, controlled, never bouncy.
+ * ----------------------------------------------------------------- */
+
+@layer utilities {
+  .reveal-line {
+    overflow: hidden;
+    display: block;
+  }
+  .reveal-line > span {
+    display: block;
+    transform: translateY(110%);
+    transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal-line.is-visible > span {
+    transform: translateY(0);
+  }
+
+  .draw-rule {
+    transform-origin: left center;
+    transform: scaleX(0);
+    transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .draw-rule.is-visible {
+    transform: scaleX(1);
+  }
+
+  .editorial-link {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 2px;
+  }
+  .editorial-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: currentColor;
+    transform-origin: left center;
+    transform: scaleX(0);
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .editorial-link:hover::after,
+  .editorial-link:focus-visible::after {
+    transform: scaleX(1);
+  }
+
+  .marquee-track {
+    display: inline-flex;
+    white-space: nowrap;
+    animation: marquee-scroll 42s linear infinite;
+  }
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+  @keyframes marquee-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .blink-cursor {
+    animation: blink 1.05s steps(1) infinite;
+  }
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+}
+
+/* -----------------------------------------------------------------
+ * Reduced motion — global per brand brief §20.
+ * ----------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .marquee-track {
+    animation: none !important;
+  }
+  .reveal-line > span {
+    transform: translateY(0) !important;
+  }
+  .draw-rule {
+    transform: scaleX(1) !important;
+  }
+}
+
+/* -----------------------------------------------------------------
+ * Scrollbar — restrained, paper-friendly.
+ * ----------------------------------------------------------------- */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--aarohan-paper);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--aarohan-border);
+  border: 2px solid var(--aarohan-paper);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--aarohan-ink-muted);
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Aarohan Legal Open Graph graphic — generated from typography and
+     procedural lines. No external imagery. No scales, gavels, seals. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Aarohan Legal — Independent Legal Practice in India">
+  <rect width="1200" height="630" fill="#F1EEE6" />
+
+  <!-- Background procedural lines -->
+  <g stroke="#11110F" stroke-width="0.5" opacity="0.12">
+    <line x1="0" y1="120" x2="1200" y2="120" />
+    <line x1="0" y1="240" x2="1200" y2="240" />
+    <line x1="0" y1="360" x2="1200" y2="360" />
+    <line x1="0" y1="480" x2="1200" y2="480" />
+    <line x1="120" y1="0" x2="120" y2="630" />
+    <line x1="360" y1="0" x2="360" y2="630" />
+    <line x1="600" y1="0" x2="600" y2="630" />
+    <line x1="840" y1="0" x2="840" y2="630" />
+    <line x1="1080" y1="0" x2="1080" y2="630" />
+  </g>
+
+  <!-- Brass diagonal accent -->
+  <g stroke="#A9844F" stroke-width="1" opacity="0.5">
+    <line x1="120" y1="540" x2="1080" y2="100" />
+  </g>
+
+  <!-- Monogram -->
+  <g transform="translate(120, 90)" stroke="#11110F" stroke-width="3" stroke-linecap="square" fill="none">
+    <path d="M8 42 L24 6" />
+    <path d="M40 42 L24 6" />
+    <path d="M14.5 30 L33.5 30" />
+    <rect x="23" y="4" width="2" height="2" fill="#6A1F2B" stroke="none" />
+  </g>
+
+  <!-- Eyebrow -->
+  <text x="120" y="220" font-family="ui-monospace, monospace" font-size="18" letter-spacing="4" fill="#6A1F2B" font-weight="500">INDEPENDENT LEGAL PRACTICE · INDIA</text>
+
+  <!-- Main headline -->
+  <text x="120" y="300" font-family="Helvetica, Arial, sans-serif" font-size="92" font-weight="700" letter-spacing="-3" fill="#11110F">Indian law,</text>
+  <text x="120" y="390" font-family="Helvetica, Arial, sans-serif" font-size="92" font-weight="700" letter-spacing="-3" fill="#11110F">considered with</text>
+  <text x="120" y="480" font-family="Helvetica, Arial, sans-serif" font-size="92" font-weight="700" letter-spacing="-3" fill="#6A1F2B">clarity.</text>
+
+  <!-- Wordmark -->
+  <text x="120" y="560" font-family="ui-monospace, monospace" font-size="20" letter-spacing="6" fill="#11110F" font-weight="500">AAROHAN · LEGAL PRACTICE</text>
+</svg>

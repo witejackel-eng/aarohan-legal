@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Aarohan Legal favicon — abstract "A" monogram on paper background.
+     No scales, no gavels, no seals, no resemblance to a government mark. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 48 48" role="img" aria-label="Aarohan">
+  <rect width="48" height="48" fill="#F1EEE6" />
+  <g stroke="#11110F" stroke-width="2" stroke-linecap="square" fill="none">
+    <path d="M8 42 L24 6" />
+    <path d="M40 42 L24 6" />
+    <path d="M14.5 30 L33.5 30" />
+  </g>
+  <rect x="23" y="4" width="2" height="2" fill="#6A1F2B" />
+</svg>
