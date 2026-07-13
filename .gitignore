@@ -52,3 +52,20 @@ prompt
 server.log
 # Skills directory
 /skills/
+
+# Aarohan-specific — never commit secrets, runtime files, dev DBs,
+# build artefacts, or local download/ screenshots. The .env.example
+# is intentionally tracked so the schema is visible to collaborators.
+.env
+.env.local
+.env.*.local
+
+# Runtime / dev artefacts
+.zscripts/dev.pid
+.zscripts/dev.log
+db/*.db
+db/*.db-journal
+
+# Local download/ contents (user-facing deliverables, not source)
+/download/*
+!/download/README.md

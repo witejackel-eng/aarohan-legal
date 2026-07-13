@@ -1,6 +1,8 @@
 # Aarohan Legal
 
-An independent legal practice website. Editorial, intellectual, restrained, contemporary, precise. Indian without decorative stereotypes. Premium without behaving like a commercial sales website.
+> **Repository:** `aarohan-legal` — an independent boutique Indian legal practice website. Editorial, intellectual, restrained, contemporary, precise. Indian without decorative stereotypes. Premium without behaving like a commercial sales website. Built around the Indian professional-ethics rules applicable to advocates: no advertising, no solicitation, no fabricated credentials, no testimonials, no case-result claims.
+
+A single-route Next.js 16 application that delivers a multi-page editorial experience through client-side view-state. The visual system is entirely original and procedural — a typographic wordmark, an editorial palette (paper, ink, constitutional red, antique brass, dark), a WebGL sculpture ("The Constitutional Field") built with Three.js / R3F, and a set of procedural SVG illustrations for the seven practice areas. No downloaded imagery is used anywhere on the site.
 
 > **Prelaunch warning.** This website is a technical and editorial implementation, not a certification of compliance. Before publication, the firm must obtain review from an enrolled advocate familiar with the applicable Bar Council of India Rules, relevant State Bar Council requirements, privacy obligations and current judicial or regulatory directions.
 
