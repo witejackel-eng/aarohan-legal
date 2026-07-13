@@ -134,113 +134,111 @@ export function DisclaimerGate({ children }: { children: React.ReactNode }) {
   return (
     <>
       <div
-        className="fixed inset-0 z-[200] bg-[var(--aarohan-paper)]"
+        className="fixed inset-0 z-[200] bg-[var(--aarohan-paper)] flex flex-col"
         role="dialog"
         aria-modal="true"
         aria-labelledby="disclaimer-title"
         aria-describedby="disclaimer-body"
       >
-        <div
-          ref={panelRef}
-          className="min-h-full w-full flex flex-col"
-        >
-          {/* Top bar */}
-          <div className="border-b border-[var(--aarohan-border)]">
-            <div className="mx-auto w-full max-w-[1600px] px-6 md:px-10 py-5 flex items-center justify-between">
-              <div className="font-mono-label text-[var(--aarohan-ink-muted)]">
-                AAROHAN · LEGAL PRACTICE
-              </div>
-              <div className="font-mono-label text-[var(--aarohan-ink-muted)]">
-                ENTRY NOTICE · {siteConfig.legal.disclaimerVersion}
-              </div>
+        {/* Top bar — fixed height, never scrolls */}
+        <div className="shrink-0 border-b border-[var(--aarohan-border)]">
+          <div className="mx-auto w-full max-w-[1600px] px-5 sm:px-6 md:px-10 py-4 md:py-5 flex items-center justify-between gap-3">
+            <div className="font-mono-label text-[var(--aarohan-ink-muted)] text-[0.6rem] sm:text-[0.6875rem]">
+              AAROHAN · LEGAL PRACTICE
+            </div>
+            <div className="font-mono-label text-[var(--aarohan-ink-muted)] text-[0.6rem] sm:text-[0.6875rem] text-right">
+              ENTRY NOTICE · {siteConfig.legal.disclaimerVersion}
             </div>
           </div>
+        </div>
 
-          {/* Body */}
-          <div className="flex-1 flex items-center">
-            <div className="mx-auto w-full max-w-[1600px] px-6 md:px-10 py-12 md:py-20">
-              <div className="grid grid-cols-12 gap-x-6 gap-y-10">
-                <div className="col-span-12 md:col-span-3">
-                  <div className="font-mono-label text-[var(--aarohan-red)] mb-4">
-                    00 / NOTICE
-                  </div>
-                  <p className="font-mono-label text-[var(--aarohan-ink-muted)] leading-relaxed normal-case tracking-normal text-xs">
-                    Please read this notice before entering the website.
+        {/* Body — scrolls independently when content exceeds viewport */}
+        <div
+          ref={panelRef}
+          className="flex-1 overflow-y-auto overs-contain"
+        >
+          <div className="mx-auto w-full max-w-[1600px] px-5 sm:px-6 md:px-10 py-8 sm:py-12 md:py-16 lg:py-20">
+            <div className="grid grid-cols-12 gap-x-6 gap-y-6 sm:gap-y-8 md:gap-y-10">
+              <div className="col-span-12 md:col-span-3">
+                <div className="font-mono-label text-[var(--aarohan-red)] mb-3 sm:mb-4">
+                  00 / NOTICE
+                </div>
+                <p className="font-mono-label text-[var(--aarohan-ink-muted)] leading-relaxed normal-case tracking-normal text-[0.7rem] sm:text-xs">
+                  Please read this notice before entering the website.
+                </p>
+              </div>
+
+              <div className="col-span-12 md:col-span-9">
+                <h1
+                  id="disclaimer-title"
+                  className="editorial-heading text-balance text-[clamp(1.75rem,6vw,2.75rem)]"
+                >
+                  Before you continue.
+                </h1>
+
+                <div
+                  id="disclaimer-body"
+                  className="mt-6 sm:mt-8 max-w-[58ch] editorial-body text-[var(--aarohan-ink)] space-y-4 sm:space-y-5 text-[1rem] sm:text-[1.0625rem] md:text-[1.1875rem] leading-relaxed sm:leading-[1.62]"
+                >
+                  <p>
+                    Under the rules governing advocates in India, advocates
+                    are not permitted to solicit work or advertise. By
+                    continuing, you confirm that you are seeking information
+                    about Aarohan Legal on your own initiative.
+                  </p>
+                  <p>
+                    The material on this website is provided only for general
+                    information and does not constitute legal advice,
+                    solicitation or an invitation to form an advocate-client
+                    relationship. Communication through this website does not
+                    by itself create an advocate-client relationship.
+                  </p>
+                  <p>
+                    Do not send confidential, privileged or time-sensitive
+                    material until an engagement has been accepted in
+                    writing.
                   </p>
                 </div>
 
-                <div className="col-span-12 md:col-span-9">
-                  <h1
-                    id="disclaimer-title"
-                    className="editorial-heading text-balance"
+                <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
+                  <button
+                    ref={acceptRef}
+                    onClick={handleAccept}
+                    className="group inline-flex items-center justify-center gap-3 bg-[var(--aarohan-ink)] text-[var(--aarohan-paper)] px-6 sm:px-7 py-4 font-mono-label text-[0.7rem] sm:text-[0.6875rem] hover:bg-[var(--aarohan-red-deep)] transition-colors w-full sm:w-auto"
                   >
-                    Before you continue.
-                  </h1>
-
-                  <div
-                    id="disclaimer-body"
-                    className="mt-8 max-w-[58ch] editorial-body text-[var(--aarohan-ink)] space-y-5"
+                    <span>I understand and wish to continue</span>
+                    <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
+                  </button>
+                  <button
+                    onClick={handleLeave}
+                    className="font-mono-label text-[var(--aarohan-ink-muted)] hover:text-[var(--aarohan-ink)] underline underline-offset-4 decoration-[var(--aarohan-border)] hover:decoration-[var(--aarohan-ink)] transition-colors text-[0.7rem] sm:text-[0.6875rem] text-center sm:text-left"
                   >
-                    <p>
-                      Under the rules governing advocates in India, advocates
-                      are not permitted to solicit work or advertise. By
-                      continuing, you confirm that you are seeking information
-                      about Aarohan Legal on your own initiative.
-                    </p>
-                    <p>
-                      The material on this website is provided only for general
-                      information and does not constitute legal advice,
-                      solicitation or an invitation to form an advocate-client
-                      relationship. Communication through this website does not
-                      by itself create an advocate-client relationship.
-                    </p>
-                    <p>
-                      Do not send confidential, privileged or time-sensitive
-                      material until an engagement has been accepted in
-                      writing.
-                    </p>
-                  </div>
+                    Leave website
+                  </button>
+                </div>
 
-                  <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
-                    <button
-                      ref={acceptRef}
-                      onClick={handleAccept}
-                      className="group inline-flex items-center gap-3 bg-[var(--aarohan-ink)] text-[var(--aarohan-paper)] px-7 py-4 font-mono-label hover:bg-[var(--aarohan-red-deep)] transition-colors"
-                    >
-                      <span>I understand and wish to continue</span>
-                      <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
-                    </button>
-                    <button
-                      onClick={handleLeave}
-                      className="font-mono-label text-[var(--aarohan-ink-muted)] hover:text-[var(--aarohan-ink)] underline underline-offset-4 decoration-[var(--aarohan-border)] hover:decoration-[var(--aarohan-ink)] transition-colors"
-                    >
-                      Leave website
-                    </button>
-                  </div>
-
-                  <div className="mt-12 pt-6 border-t border-[var(--aarohan-border)]">
-                    <button
-                      onClick={openDisclaimer}
-                      className="font-mono-label text-[var(--aarohan-ink-muted)] hover:text-[var(--aarohan-ink)] editorial-link"
-                    >
-                      Read the complete Disclaimer →
-                    </button>
-                  </div>
+                <div className="mt-10 sm:mt-12 pt-6 border-t border-[var(--aarohan-border)]">
+                  <button
+                    onClick={openDisclaimer}
+                    className="font-mono-label text-[var(--aarohan-ink-muted)] hover:text-[var(--aarohan-ink)] editorial-link text-[0.7rem] sm:text-[0.6875rem]"
+                  >
+                    Read the complete Disclaimer →
+                  </button>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Bottom bar */}
-          <div className="border-t border-[var(--aarohan-border)]">
-            <div className="mx-auto w-full max-w-[1600px] px-6 md:px-10 py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-              <p className="font-mono-label text-[var(--aarohan-ink-muted)] normal-case tracking-normal text-xs">
-                {siteConfig.firm.officeCity}, {siteConfig.firm.officeCountry}
-              </p>
-              <p className="font-mono-label text-[var(--aarohan-ink-muted)] normal-case tracking-normal text-xs">
-                Last legal review: {siteConfig.legal.lastLegalReviewDate}
-              </p>
-            </div>
+        {/* Bottom bar — fixed height, never scrolls */}
+        <div className="shrink-0 border-t border-[var(--aarohan-border)]">
+          <div className="mx-auto w-full max-w-[1600px] px-5 sm:px-6 md:px-10 py-3 md:py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-2">
+            <p className="font-mono-label text-[var(--aarohan-ink-muted)] normal-case tracking-normal text-[0.65rem] sm:text-xs">
+              {siteConfig.firm.officeCity}, {siteConfig.firm.officeCountry}
+            </p>
+            <p className="font-mono-label text-[var(--aarohan-ink-muted)] normal-case tracking-normal text-[0.65rem] sm:text-xs">
+              Last legal review: {siteConfig.legal.lastLegalReviewDate}
+            </p>
           </div>
         </div>
       </div>
